@@ -19,11 +19,9 @@ import java.util.List;
 @Service
 public class LicenseApplyServiceImpl implements ILicenseApplyService {
 
-    private ILicenseMapper licenseMapper;
+    private final ILicenseMapper licenseMapper;
 
-    private ILicenseApplyMapper licenseApplyMapper;
-
-
+    private final ILicenseApplyMapper licenseApplyMapper;
 
     public LicenseApplyServiceImpl(ILicenseMapper licenseMapper, ILicenseApplyMapper licenseApplyMapper) {
         this.licenseMapper = licenseMapper;
