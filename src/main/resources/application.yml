@@ -1,0 +1,67 @@
+tarot:
+  version: 0.0.1
+  knife4j:
+    describe: License导入
+    groupName: 默认分组
+  address:
+    mysql: 10.27.6.44:3306
+  file:
+    upload:
+      path: /usr/local/license
+
+
+server:
+  port: 5000
+  undertow:
+    buffer-size: 1024
+    direct-buffers: true
+    threads:
+      io: 8
+      worker: 64
+
+spring:
+  application:
+    name: license
+
+  profiles:
+    active: dev
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 50MB
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://${tarot.address.mysql}/license_new?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    hikari:
+      maximum-pool-size: 12
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+      connection-test-query: select 1
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+knife4j:
+  enable: true
+  basic:
+    enable: false
+    # Basic认证用户名
+    username: tarot
+    # Basic认证密码
+    password: tarot
+
+springfox:
+  documentation:
+    # 开启open-api
+    open-api:
+      enabled: true
